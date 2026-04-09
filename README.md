@@ -26,5 +26,5 @@ Este proyecto está preparado para funcionar en entornos contenedores. Utiliza D
 
 * ## 👥 Equipo de Desarrollo
 * [Franz Heinen](https://github.com/FranzHeinen)
-* [Tadeo Isaac](https://github.com/isacctadeo)
+* [Tadeo Isaac](https://github.com/isaactadeo)
 * [Felipe Williner](https://github.com/felipewilliner)
