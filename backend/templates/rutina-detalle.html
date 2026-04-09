@@ -1,0 +1,173 @@
+{{template "layout" .}}
+
+{{define "title"}}Detalle de Rutina{{end}}
+
+{{define "rutina-detalle-content"}}
+<div class="container mt-4">
+  <!-- Header de la rutina -->
+  <div class="d-flex justify-content-between align-items-start mb-4">
+    <div>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/rutinas">Mis Rutinas</a></li>
+          <li class="breadcrumb-item active" id="breadcrumbRutina">Cargando...</li>
+        </ol>
+      </nav>
+     <!-- Formulario para editar Nombre y Descripción (CORREGIDO Y REDISEÑADO) -->
+      <form id="formDetallesRutina">
+        <div class="row g-2 align-items-end">
+          <div class="col-md-4">
+            <label for="rutinaNombreInput" class="form-label small text-muted mb-0">Nombre de la Rutina</label>
+            <input type="text" class="form-control" id="rutinaNombreInput" placeholder="Nombre de la rutina" required>
+          </div>
+          <div class="col-md-5">
+            <label for="rutinaDescripcionInput" class="form-label small text-muted mb-0">Descripción</label>
+            <input type="text" class="form-control" id="rutinaDescripcionInput" placeholder="Descripción corta">
+          </div>
+          <div class="col-md-3">
+           <button type="submit" class="btn btn-primary w-100" id="btnGuardarDetallesRutina">
+        Guardar
+      </button>
+          </div>
+        </div>
+      </form>
+      <div id="message-detalles" class="mt-2"></div>
+
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-primary" onclick="agregarEjercicio()">
+        <i class="bi bi-plus-lg me-1"></i> Agregar Ejercicio
+      </button>
+      <button class="btn btn-outline-secondary" onclick="volverARutinas()">
+        <i class="bi bi-arrow-left me-1"></i> Volver
+      </button>
+    </div>
+  </div>
+
+  <!-- Lista de ejercicios -->
+  <div class="row">
+    <div class="col-12">
+      <div id="listaEjercicios">
+        <!-- Los ejercicios se cargarán aquí -->
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Cargando...</span>
+          </div>
+          <p class="mt-2 text-muted">Cargando ejercicios...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para agregar/editar ejercicio -->
+<div class="modal fade" id="modalEjercicio" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <form id="formEjercicio" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEjercicioTitle">Agregar Ejercicio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label class="form-label">Ejercicio</label>
+              <select class="form-select" id="selectEjercicio" name="ejercicio_id" required>
+                <option value="">Seleccionar ejercicio...</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="mb-3">
+              <label class="form-label">Orden</label>
+              <input type="number" class="form-control" name="orden" min="1" value="1" required>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="mb-3">
+              <label class="form-label">Descanso (seg)</label>
+              <input type="number" class="form-control" name="tiempo_descanso" min="0" value="60">
+            </div>
+          </div>
+        </div>
+
+        <!-- Configuración de series -->
+        <div class="mb-3">
+          <label class="form-label">Series</label>
+
+          <div class="row g-2 mb-1 small text-muted">
+              <div class="col-3"><b>Reps</b></div>
+              <div class="col-3"><b>Peso (kg)</b></div>
+              <div class="col-4"><b>Estado</b></div>
+              <div class="col-2"></div> </div>
+          <div id="configSeries">
+            <div class="series-item row g-2 mb-2">
+              <div class="col-3">
+                <input type="number" class="form-control" placeholder="Reps" name="repeticiones[]" min="1" value="10" required>
+              </div>
+              <div class="col-3">
+                <input type="number" class="form-control" placeholder="Peso (kg)" name="peso[]" min="0" step="0.5" value="0" required>
+              </div>
+              <div class="col-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="completada[]">
+                  <label class="form-check-label small">Completada</label>
+                </div>
+              </div>
+              <div class="col-2">
+                <button type="button" class="btn btn-outline-danger btn-sm" onclick="eliminarSerie(this)">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline-primary btn-sm mt-2" onclick="agregarSerie()">
+            <i class="bi bi-plus-lg me-1"></i> Agregar Serie
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Ejercicio</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal para editar serie específica -->
+<div class="modal fade" id="modalSerie" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <form id="formSerie" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Serie</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="serieEjercicioId">
+        <input type="hidden" id="serieNumero">
+        <div class="mb-3">
+          <label class="form-label">Repeticiones</label>
+          <input type="number" class="form-control" id="serieRepeticiones" min="1" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Peso (kg)</label>
+          <input type="number" class="form-control" id="seriePeso" min="0" step="0.5" required>
+        </div>
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="serieCompletada">
+          <label class="form-check-label">Serie completada</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>
+    </form>
+  </div>
+</div>
+{{end}}
+
+{{define "scripts-rutina-detalle"}}
+<script src="/static/js/rutina-detalle.js"></script>
+{{end}}

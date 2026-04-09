@@ -1,0 +1,25 @@
+{{template "layout" .}}
+
+{{define "title"}}Inicio - Menú Principal{{end}}
+
+{{define "home-content"}}
+<div class="container mt-4">
+    <h1 class="h3 mb-4">Menú Principal</h1>
+    
+    <div id="userMenuContainer">
+        <h2 class="h5 text-muted">Mi Actividad</h2>
+        <div class="row g-3" id="userMenuCards">
+            </div>
+    </div>
+    
+    <div id="adminMenuContainer" class="mt-5" style="display: none;">
+        <h2 class="h5 text-muted">Panel de Administración</h2>
+        <div class="row g-3" id="adminMenuCards">
+            </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-home"}}
+<script src="/static/js/home.js"></script>
+{{end}}

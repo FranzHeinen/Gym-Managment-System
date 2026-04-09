@@ -1,0 +1,52 @@
+{{template "layout" .}}
+
+{{define "title"}}Logs del Sistema{{end}}
+
+{{define "admin_logs-content"}}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Logs del Sistema</h1>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Fecha y Hora</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Método</th>
+                            <th scope="col">Ruta</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">IP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{if .Logs}}
+                            {{range .Logs}}
+                            <tr>
+                                <td>{{.Timestamp}}</td>
+                                <td>
+                                    <span class="badge {{.StatusCSS}}">{{.Status}}</span>
+                                </td>
+                                <td>{{.Method}}</td>
+                                <td>{{.Path}}</td>
+                                <td><small>{{.Username}}</small></td>
+                                <td>{{.ClientIP}}</td>
+                            </tr>
+                            {{end}}
+                        {{else}}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted">No hay logs para mostrar.</td>
+                        </tr>
+                        {{end}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-admin_logs"}}{{end}}

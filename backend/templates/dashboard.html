@@ -1,0 +1,78 @@
+{{template "layout" .}}
+
+{{define "title"}}Mi Progreso{{end}}
+
+{{define "dashboard-content"}}
+<div class="container mt-4">
+    <h1 class="h3 mb-4">Mi Progreso</h1>
+    
+    <div class="row">
+
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Mis Estadísticas</h5>
+                </div>
+                <div class="card-body">
+                    <div id="statsContainer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card text-center mb-3">
+                                    <div class="card-body">
+                                        <h3 class="mb-0" id="statFrecuencia">...</h3>
+                                        <p class="text-muted mb-0">Entrenamientos Totales</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-center">Rutinas Más Utilizadas</h6>
+                                <ul class="list-group list-group-flush" id="statRutinas">
+                                    <li class="list-group-item text-center">
+                                        <span class="spinner-border spinner-border-sm"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <h6 class="text-center">Progreso en el Tiempo</h6>
+                                <p class="text-muted text-center small" id="chartLoading">
+                                    <span class="spinner-border spinner-border-sm"></span> Cargando gráfico...
+                                </p>
+                                <canvas id="progresoChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Historial de Entrenamientos</h5>
+                </div>
+                <div class="card-body">
+                    <div class="history-scroll-box" id="historialContainer">
+                        <table class="table table-hover table-sm mb-0">
+                            <tbody id="statHistorial">
+                                <tr>
+                                    <td class="text-center">
+                                        <span class="spinner-border spinner-border-sm"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-dashboard"}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="/static/js/dashboard.js"></script>
+{{end}}

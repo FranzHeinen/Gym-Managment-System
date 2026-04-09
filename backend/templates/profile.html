@@ -1,0 +1,83 @@
+{{template "layout" .}}
+
+{{define "title"}}Mi Perfil{{end}}
+
+{{define "profile-content"}}
+<div class="container mt-4">
+    <h1 class="h3 mb-4">Mi Perfil</h1>
+    <div class="row">
+        
+        <div class="col-lg-8">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Información Personal</h5>
+                </div>
+                <div class="card-body">
+                    <div id="message-profile"></div>
+                    <form id="profileForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nombre" class="form-label">Nombre Completo</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Correo Electrónico</label>
+                                <input type="email" class="form-control" id="email" name="email" disabled>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="peso" class="form-label">Peso (kg)</label>
+                                <input type="number" step="0.1" class="form-control" id="peso" name="peso">
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="altura" class="form-label">Altura (cm)</label>
+                                <input type="number" class="form-control" id="altura" name="altura">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nivel_experiencia" class="form-label">Nivel de Experiencia</label>
+                            <select class="form-select" id="nivel_experiencia" name="nivel_experiencia">
+                                <option value="Principiante">Principiante</option>
+                                <option value="Intermedio">Intermedio</option>
+                                <option value="Avanzado">Avanzado</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Objetivos de Fitness</label>
+                            <div id="objetivos">
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="Perder peso" id="obj1"><label class="form-check-label" for="obj1">Perder peso</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="Ganar músculo" id="obj2"><label class="form-check-label" for="obj2">Ganar músculo</label></div>
+                                <div class="form-check"><input class="form-check-input" type="checkbox" value="Mantenerse" id="obj3"><label class="form-check-label" for="obj3">Mantenerse en forma</label></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitProfileBtn"><i class="bi bi-save me-2"></i>Guardar Cambios</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-header"><h5 class="mb-0">Cambiar Contraseña</h5></div>
+                <div class="card-body">
+                    <div id="message-password"></div>
+                    <form id="passwordForm">
+                        <div class="mb-3"><label for="old_password" class="form-label">Contraseña Actual</label><input type="password" class="form-control" id="old_password" required></div>
+                        <div class="mb-3"><label for="new_password" class="form-label">Nueva Contraseña</label><input type="password" class="form-control" id="new_password" minlength="6" required></div>
+                        <div class="d-grid"><button type="submit" class="btn btn-secondary" id="submitPasswordBtn"><i class="bi bi-key me-2"></i>Actualizar Contraseña</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-profile"}}
+<script src="/static/js/profile.js"></script>
+{{end}}

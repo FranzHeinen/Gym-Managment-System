@@ -1,0 +1,40 @@
+{{template "layout" .}}
+
+{{define "title"}}Gestionar Usuarios{{end}}
+
+{{define "admin-usuarios-content"}}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Gestión de Usuarios</h1>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Miembro Desde</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaUsuarios">
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <span class="spinner-border spinner-border-sm"></span>
+                                Cargando usuarios...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-admin-usuarios"}}
+<script src="/static/js/admin_usuarios.js"></script>
+{{end}}

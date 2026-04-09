@@ -1,0 +1,68 @@
+{{template "layout" .}}
+
+{{define "title"}}Gestionar Ejercicios{{end}}
+
+{{define "admin-ejercicios-content"}}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Catálogo de Ejercicios</h1>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEjercicio">
+            <i class="bi bi-plus-lg me-1"></i> Nuevo Ejercicio
+        </button>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                    <input type="text" id="filtroNombre" class="form-control" placeholder="Buscar por nombre...">
+                </div>
+                <div class="col-md-4">
+                    <select id="filtroGrupo" class="form-select">
+                        <option value="">Filtrar por grupo muscular...</option>
+                        </select>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-secondary w-100" id="limpiarFiltros">Limpiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="listaEjercicios" class="row g-4">
+        </div>
+</div>
+
+<div class="modal fade" id="modalEjercicio" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <form id="formEjercicio" class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Nuevo Ejercicio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="ejercicioId" name="id">
+                <div class="row">
+                    <div class="col-md-6 mb-3"><label class="form-label">Nombre</label><input type="text" name="nombre" class="form-control" required></div>
+                    <div class="col-md-6 mb-3"><label class="form-label">Categoría</label><input type="text" name="categoria" class="form-control" placeholder="Fuerza, Cardio, etc." required></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3"><label class="form-label">Grupo Muscular</label><input type="text" name="grupo_muscular" class="form-control" placeholder="Pecho, Espalda, etc." required></div>
+                    <div class="col-md-6 mb-3"><label class="form-label">Dificultad</label><select name="dificultad" class="form-select"><option value="Principiante">Principiante</option><option value="Intermedio">Intermedio</option><option value="Avanzado">Avanzado</option></select></div>
+                </div>
+                <div class="mb-3"><label class="form-label">Descripción</label><textarea name="descripcion" class="form-control" rows="2"></textarea></div>
+                <div class="mb-3"><label class="form-label">Instrucciones</label><textarea name="instruccion" class="form-control" rows="3"></textarea></div>
+                <div class="mb-3"><label class="form-label">URL de Video/Imagen</label><input type="url" name="demostracion" class="form-control"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar Ejercicio</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{end}}
+
+{{define "scripts-admin-ejercicios"}}
+<script src="/static/js/admin_ejercicios.js"></script>
+{{end}}

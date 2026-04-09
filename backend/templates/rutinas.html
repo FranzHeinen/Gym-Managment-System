@@ -1,0 +1,48 @@
+{{template "layout" .}}
+
+{{define "title"}}Mis Rutinas{{end}}
+
+{{define "rutinas-content"}}
+<div class="container mt-4">
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0">Mis Rutinas</h1>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRutina">
+      <i class="bi bi-plus-lg me-1"></i> Nueva rutina
+    </button>
+  </div>
+
+  <div id="listaRutinas" class="row g-3">
+    <!-- Las rutinas se cargarán aquí con JavaScript -->
+  </div>
+
+  <!-- Modal crear rutina -->
+  <div class="modal fade" id="modalRutina" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="formRutina" class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Crear rutina</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Descripción</label>
+            <input type="text" name="descripcion" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{end}}
+
+{{define "scripts-rutinas"}}
+<script src="/static/js/rutinas.js"></script>
+{{end}}
