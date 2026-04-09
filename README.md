@@ -2,6 +2,19 @@
 
 Potente sistema de gestión de gimnasios desarrollado en **Go**, diseñado para ser eficiente, escalable y fácil de desplegar mediante contenedores.
 
+## 🚀 Guía de Uso (Manual de Ejecución)
+Para probar la herramienta en tu entorno local, sigue estos pasos:
+
+* **Requisitos**: Tener instalado Docker Desktop.
+
+* **Clonar el repositorio**: `git clone https://github.com/FranzHeinen/Gym-Managment-System.git`
+
+* **Desplegar con Docker**: Abrir una terminal en la raíz del proyecto y ejecutar: `docker-compose up --build.`
+
+* **Acceso al Sistema**: Abrir el navegador en (http://localhost:8080) para ver el Dashboard o en /swagger/index.html para la API.
+
+* **Base de Datos**: El sistema levantará automáticamente una instancia de MongoDB configurada.
+
 ## 🛠️ Tecnologías Core
 * **Lenguaje:** Go (Golang)
 * **Base de Datos:** MongoDB (NoSQL)
