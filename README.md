@@ -23,3 +23,8 @@ Este proyecto está preparado para funcionar en entornos contenedores. Utiliza D
 * **Gestión de Usuarios:** Registro, login y perfiles con roles (Admin/Usuario).
 * **Administración de Entrenamientos:** Creación de rutinas personalizadas, series y seguimiento de ejercicios.
 * **Panel de Control:** Dashboard para usuarios y vista de administración para gestión de logs y estadísticas.
+
+* ## 👥 Equipo de Desarrollo
+* [Tadeo Isaac](https://github.com/TadeoIsacc)
+* [Felipe Williner](https://github.com/felipewilliner)
+* [Franz Heinen](https://github.com/FranzHeinen)
