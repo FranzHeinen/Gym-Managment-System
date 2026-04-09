@@ -11,7 +11,7 @@ Para probar la herramienta en tu entorno local, sigue estos pasos:
 
 * **Desplegar con Docker**: Abrir una terminal en la raíz del proyecto y ejecutar: `docker-compose up --build.`
 
-* **Acceso al Sistema**: Abrir el navegador en (http://localhost:8080) para ver el Dashboard o en /swagger/index.html para la API.
+* **Acceso al Sistema**: Abrir el navegador en [http://localhost:8080] para ver el Dashboard o en [/swagger/index.html] para la API.
 
 * **Base de Datos**: El sistema levantará automáticamente una instancia de MongoDB configurada.
 
